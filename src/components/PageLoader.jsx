@@ -25,20 +25,27 @@ export default function PageLoader() {
   useEffect(() => {
     const MIN = 3800
     const start = Date.now()
+    let hideTimer = null
+    let innerTimer = null
 
     const hide = () => {
       setFading(true)
-      setTimeout(() => setVisible(false), 700)
+      innerTimer = setTimeout(() => setVisible(false), 700)
     }
 
     const maybeHide = () => {
       const wait = Math.max(0, MIN - (Date.now() - start))
-      setTimeout(hide, wait)
+      hideTimer = setTimeout(hide, wait)
+    }
+
+    const cleanup = () => {
+      clearTimeout(hideTimer)
+      clearTimeout(innerTimer)
     }
 
     if (document.readyState === 'complete') {
       maybeHide()
-      return
+      return cleanup
     }
 
     window.addEventListener('load', maybeHide)
@@ -47,6 +54,7 @@ export default function PageLoader() {
     return () => {
       window.removeEventListener('load', maybeHide)
       clearTimeout(fallback)
+      cleanup()
     }
   }, [])
 

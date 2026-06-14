@@ -33,8 +33,12 @@ export default function CustomComboPicker({ open, onClose, cookies, rusks }) {
       const next = { ...prev }
       const current = next[title] || 0
       const updated = current + delta
-      if (updated <= 0) delete next[title]
-      else if (updated <= REQUIRED_ITEMS) next[title] = updated
+      if (updated <= 0) {
+        delete next[title]
+      } else {
+        const newTotal = Object.values(prev).reduce((s, q) => s + q, 0) - current + updated
+        if (newTotal <= REQUIRED_ITEMS) next[title] = updated
+      }
       return next
     })
   }
@@ -46,10 +50,8 @@ export default function CustomComboPicker({ open, onClose, cookies, rusks }) {
       .map(([title, qty]) => `${qty}x ${title}`)
       .join(', ')
 
-    const existingCustomCount = cartItems.filter((i) =>
-      i.title.startsWith('CUSTOM COMBO')
-    ).length
-    const title = `CUSTOM COMBO #${existingCustomCount + 1}`
+    const uid = Math.random().toString(36).slice(2, 6).toUpperCase()
+    const title = `CUSTOM COMBO #${uid}`
 
     const firstSelectedTitle = Object.keys(selections)[0]
     const firstProduct = allProducts.find((p) => p.title === firstSelectedTitle)
