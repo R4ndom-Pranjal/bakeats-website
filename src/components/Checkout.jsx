@@ -27,10 +27,14 @@ export default function Checkout() {
   const [confirmedOrder, setConfirmedOrder] = useState(null)
   const [copied, setCopied] = useState(false)
 
-  const copyOrderId = () => {
-    navigator.clipboard.writeText(confirmedOrder.orderId)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  const copyOrderId = async () => {
+    try {
+      await navigator.clipboard.writeText(confirmedOrder.orderId)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // clipboard access denied — do nothing
+    }
   }
 
   useEffect(() => {
@@ -73,7 +77,7 @@ export default function Checkout() {
       const res = await fetch('/api/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: totalAmount * 100, currency: 'INR', receipt: `receipt_${Date.now()}` }),
+        body: JSON.stringify({ items: items.map(i => ({ title: i.title, qty: i.qty })), currency: 'INR', receipt: `receipt_${Date.now()}` }),
       })
       if (!res.ok) throw new Error()
       orderData = await res.json()

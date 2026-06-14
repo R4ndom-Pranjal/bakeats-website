@@ -1,5 +1,6 @@
 import { createRazorpayOrder } from '../_lib/razorpay.js'
 import { json, error } from '../_lib/responses.js'
+import { computeTotal } from '../_lib/prices.js'
 
 export async function onRequestPost({ request, env }) {
   let body
@@ -9,9 +10,16 @@ export async function onRequestPost({ request, env }) {
     return error(400, 'Invalid JSON body')
   }
 
-  const { amount, currency = 'INR', receipt } = body
-  if (!amount || amount < 100) {
-    return error(400, 'Invalid amount')
+  const { items, currency = 'INR', receipt } = body
+  if (!items || !Array.isArray(items) || items.length === 0) {
+    return error(400, 'Invalid items')
+  }
+
+  let amount
+  try {
+    amount = computeTotal(items) * 100 // paise
+  } catch (err) {
+    return error(400, err.message)
   }
 
   try {

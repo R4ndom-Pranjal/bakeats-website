@@ -2,6 +2,7 @@ import { verifyPaymentSignature } from '../_lib/razorpay.js'
 import { generateOrderId } from '../_lib/orders.js'
 import { sendEmail, customerEmailHtml, merchantEmailHtml } from '../_lib/emails.js'
 import { json, error } from '../_lib/responses.js'
+import { computeTotal } from '../_lib/prices.js'
 
 export async function onRequestPost({ request, env, waitUntil }) {
   let body
@@ -20,8 +21,14 @@ export async function onRequestPost({ request, env, waitUntil }) {
     customerPhone,
     customerAddress,
     items,
-    totalAmount,
   } = body
+
+  let totalAmount
+  try {
+    totalAmount = computeTotal(items)
+  } catch (err) {
+    return error(400, err.message)
+  }
 
   if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
     return json({ success: false, error: 'Missing payment details' }, { status: 400 })
