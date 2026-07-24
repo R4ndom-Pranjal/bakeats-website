@@ -131,6 +131,7 @@ export default function Hero() {
           <button className="carousel-btn" onClick={handleNext} aria-label="Next">&#8250;</button>
         </div>
       </div>
+
     </section>
   )
 }

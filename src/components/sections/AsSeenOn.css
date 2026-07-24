@@ -24,7 +24,7 @@
 
 @keyframes press-marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(calc(-4 * (320px + 2rem))); }
+  to { transform: translateX(-50%); }
 }
 
 .press-card {

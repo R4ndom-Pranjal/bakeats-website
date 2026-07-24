@@ -10,7 +10,8 @@ const cookieBundles = [
     name: 'Festive Delight',
     items: ['CHOCO CHASKAAA', 'NAAARIYAL', 'MASKAAA'],
     weight: '180 g each',
-    price: 299,
+    originalPrice: 299,
+    price: 249,
     images: [
       '/products/cookies/choco.png',
       '/products/cookies/nariyal.png',

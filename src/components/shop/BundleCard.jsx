@@ -42,6 +42,9 @@ export default function BundleCard({ bundle }) {
         {bundle.price ? (
           <div className="bundle-price">
             <span className="bundle-mrp-label">MRP</span>
+            {bundle.originalPrice && (
+              <span className="bundle-mrp-original">&#8377;{bundle.originalPrice}</span>
+            )}
             <span className="bundle-mrp">&#8377;{bundle.price}</span>
           </div>
         ) : (
