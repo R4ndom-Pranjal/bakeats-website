@@ -138,6 +138,15 @@
   letter-spacing: 0.1em;
 }
 
+.bundle-mrp-original {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #999;
+  text-decoration: line-through;
+  line-height: 1;
+}
+
 .bundle-mrp {
   font-family: var(--font-display);
   font-size: 2rem;
