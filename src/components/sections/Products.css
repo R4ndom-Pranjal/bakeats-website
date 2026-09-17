@@ -196,4 +196,13 @@
     max-width: 300px;
     scroll-snap-align: center;
   }
+
+  .bundle-grid:only-child > :only-child,
+  .bundle-grid > :only-child {
+    margin: 0 auto;
+  }
+
+  .bundle-grid:has(> :only-child) {
+    justify-content: center;
+  }
 }

@@ -23,7 +23,7 @@ export default function PageLoader() {
   }, [])
 
   useEffect(() => {
-    const MIN = 3800
+    const MIN = 2200
     const start = Date.now()
     let hideTimer = null
     let innerTimer = null
