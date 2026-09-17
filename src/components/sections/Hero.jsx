@@ -3,6 +3,7 @@ import './Hero.css'
 
 const products = [
   { title: 'MASKAAA', type: 'Cookie', image: '/products/cookies/maska.png' },
+  { title: 'FRUITY MASKAAA', type: 'Cookie', image: '/products/cookies/fruity-maska.png' },
   { title: 'NAAARIYAL', type: 'Cookie', image: '/products/cookies/nariyal.png' },
   { title: 'CHOCO CHASKAAA', type: 'Cookie', image: '/products/cookies/choco.png' },
   { title: 'JEERAAA', type: 'Cookie', image: '/products/cookies/jeera.png' },

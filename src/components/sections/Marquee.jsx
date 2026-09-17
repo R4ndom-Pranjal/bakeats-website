@@ -1,7 +1,7 @@
 import './Marquee.css'
 
 export default function Marquee() {
-  const text = '🍪 FESTIVE DELIGHT 🍪 SWEET & SALTY 🍪 DRY FRUIT COOKIES 🍪 SWEET CRAVINGS 🍪 CLASSIC RUSKS 🍪 CUSTOM COMBO 🍪 MASKAAA 🍪 NAAARIYAL 🍪 CHOCO CHASKAAA 🍪 JEERAAA'
+  const text = '🍪 FESTIVE DELIGHT 🍪 SWEET & SALTY 🍪 DRY FRUIT COOKIES 🍪 SWEET CRAVINGS 🍪 CLASSIC RUSKS 🍪 CUSTOM COMBO 🍪 MASKAAA 🍪 FRUITY MASKAAA 🍪 NAAARIYAL 🍪 CHOCO CHASKAAA 🍪 JEERAAA'
 
   return (
     <div className="marquee-container">

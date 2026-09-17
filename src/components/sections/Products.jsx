@@ -10,8 +10,7 @@ const cookieBundles = [
     name: 'Festive Delight',
     items: ['CHOCO CHASKAAA', 'NAAARIYAL', 'MASKAAA'],
     weight: '180 g each',
-    originalPrice: 299,
-    price: 249,
+    price: 299,
     images: [
       '/products/cookies/choco.png',
       '/products/cookies/nariyal.png',
@@ -28,7 +27,7 @@ const cookieBundles = [
     images: [
       '/products/cookies/ajwain.png',
       '/products/cookies/jeera.png',
-      '/products/cookies/maska.png',
+      '/products/cookies/fruity-maska.png',
       '/products/cookies/maska.png',
     ],
     accent: 'var(--yellow)',
@@ -56,7 +55,7 @@ const cookieBundles = [
     images: [
       '/products/cookies/choco.png',
       '/products/cookies/nariyal.png',
-      '/products/cookies/maska.png',
+      '/products/cookies/fruity-maska.png',
       '/products/cookies/maska.png',
     ],
     accent: 'var(--red)',
@@ -86,6 +85,13 @@ const cookies = [
     description: 'Classic maska cookies with rich buttery flavor and a satisfying crisp bite.',
     image: '/products/cookies/maska.png',
     ingredients: ['🧈', '🌾'],
+  },
+  {
+    type: 'Premium Cookies',
+    title: 'FRUITY MASKAAA',
+    description: 'Topped with Tutty Fruity, this cookie takes you to a sweet ride.',
+    image: '/products/cookies/fruity-maska.png',
+    ingredients: ['🍬', '🧈'],
   },
   {
     type: 'Premium Cookies',
