@@ -58,6 +58,9 @@ export default function AsSeenOn() {
           {pressItems.map((item) => (
             <PressCard item={item} key={item.name + '-dup'} />
           ))}
+          {pressItems.map((item) => (
+            <PressCard item={item} key={item.name + '-dup2'} />
+          ))}
         </div>
       </div>
     </section>

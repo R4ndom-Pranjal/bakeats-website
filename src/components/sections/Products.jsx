@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import BundleCard from '../shop/BundleCard'
+import HamperCard from '../shop/HamperCard'
 import ProductCard from '../shop/ProductCard'
 import CustomComboPicker from '../shop/CustomComboPicker'
 import { useCart } from '../../context/CartContext'
@@ -77,6 +78,27 @@ const ruskBundle = {
   accent: 'var(--yellow)',
   type: 'Pack of 4',
 }
+
+const festiveHampers = [
+  {
+    name: 'Festive Delight Box',
+    image: '/products/hampers/festive-delight.png',
+    price: 299,
+    description: '',
+  },
+  {
+    name: 'Warm Wishes Basket',
+    image: '/products/hampers/warm-wishes.png',
+    price: 589,
+    description: '',
+  },
+  {
+    name: 'Grand Celebration',
+    image: '/products/hampers/grand-celebration.png',
+    price: 749,
+    description: '',
+  },
+]
 
 const cookies = [
   {
@@ -225,9 +247,9 @@ export default function Products() {
     )
 
     // Reset stagger per grid so later grids don't accumulate huge delays
-    const grids = sectionRef.current?.querySelectorAll('.bundle-grid, .product-grid')
+    const grids = sectionRef.current?.querySelectorAll('.hamper-grid, .bundle-grid, .product-grid')
     grids?.forEach((grid) => {
-      const cards = grid.querySelectorAll('.bundle-card, .product-card')
+      const cards = grid.querySelectorAll('.hamper-card, .bundle-card, .product-card')
       cards.forEach((card, i) => {
         card.style.transitionDelay = `${(i % 4) * 0.05}s`
         observer.observe(card)
@@ -243,7 +265,14 @@ export default function Products() {
         <h2>OUR BAKED BABIES</h2>
       </div>
 
-      <h3 className="product-section-title">COOKIE BUNDLES</h3>
+      <h3 className="product-section-title">FESTIVE HAMPERS</h3>
+      <div className="hamper-grid">
+        {festiveHampers.map((hamper) => (
+          <HamperCard key={hamper.name} hamper={hamper} />
+        ))}
+      </div>
+
+      <h3 className="product-section-title" style={{ marginTop: '5rem' }}>COOKIE BUNDLES</h3>
       <div className="bundle-grid">
         {cookieBundles.map((bundle) => (
           <BundleCard key={bundle.name} bundle={bundle} />
